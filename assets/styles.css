@@ -1,0 +1,584 @@
+/* ===========================
+   Minimal Glass UI — Full CSS
+   (Rank text updated to BLACK)
+   =========================== */
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #010203;
+  --panel: rgba(255, 255, 255, 0.03);
+  --panel-strong: rgba(255, 255, 255, 0.05);
+  --muted: #9ca3af;
+  --text: #e0e0e0;
+  --accent: #add8e6;
+  --accent-glow: rgba(173, 216, 230, 0.25);
+  --positive: #2ed573;
+  --negative: #ff4757;
+  --radius: 14px;
+  --maxw: 1400px;
+  --gap: 1rem;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+}
+
+/* APP BG */
+html,
+body {
+  height: 100%;
+}
+body {
+  background: linear-gradient(180deg, #020305 0%, #07080a 100%);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* ROOT APP */
+.app {
+  min-height: 100vh;
+}
+
+/* HEADER */
+.header {
+  backdrop-filter: blur(20px);
+  padding: 18px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  background: linear-gradient(180deg, rgba(2, 4, 6, 0.55), rgba(2, 4, 6, 0.35));
+}
+
+.header-content {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 18px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Logo */
+.logo-section h1 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--accent), #86d8ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2px;
+}
+.logo-section p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* SEARCH */
+.search-input,
+#search {
+  max-width: 520px;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  outline: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+#search::placeholder {
+  color: rgba(200, 210, 215, 0.25);
+}
+#search:focus {
+  box-shadow: 0 6px 20px rgba(10, 20, 30, 0.6);
+  border-color: rgba(173, 216, 230, 0.18);
+}
+
+/* CONTROLS */
+.controls {
+  max-width: var(--maxw);
+  margin: 18px auto;
+  padding: 0 18px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* CUSTOM DROPDOWN */
+.dropdown {
+  position: relative;
+  width: 180px;
+  min-width: 140px;
+}
+.dropdown-selected {
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  color: var(--text);
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dropdown-selected::after {
+  content: "▾";
+  margin-left: 8px;
+  opacity: 0.9;
+  font-size: 12px;
+}
+.dropdown.open .dropdown-selected {
+  box-shadow: 0 6px 18px rgba(6, 10, 14, 0.6);
+  border-color: rgba(173, 216, 230, 0.12);
+}
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: calc(100% + 8px);
+  width: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 12, 14, 0.95),
+    rgba(10, 12, 14, 0.94)
+  );
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(6, 10, 14, 0.6);
+  z-index: 200;
+  max-height: 260px;
+}
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+.dropdown-item {
+  padding: 10px 12px;
+  color: var(--text);
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+}
+.dropdown-item:hover {
+  background: rgba(173, 216, 230, 0.09);
+  color: #dff7ff;
+}
+
+/* VIEW TOGGLE */
+.view-toggle {
+  display: flex;
+  gap: 8px;
+}
+.view-toggle button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  font-weight: 700;
+  cursor: pointer;
+}
+.view-toggle button.active {
+  background: var(--accent);
+  color: #021018;
+  box-shadow: 0 8px 30px var(--accent-glow);
+}
+
+/* CRYPTO CONTAINER */
+.crypto-container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 18px;
+}
+.crypto-container.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+.crypto-container.list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+/* CRYPTO CARD */
+.crypto-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    border-color 0.18s ease;
+  overflow: hidden;
+}
+.crypto-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(173, 216, 230, 0.18);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.6);
+}
+
+/* Card content */
+.crypto-info {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.crypto-info img {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.crypto-info h3 {
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-bottom: 2px;
+  font-weight: 700;
+}
+.crypto-info .symbol {
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+/* ✔ UPDATED — Rank badge text now BLACK */
+.rank {
+  display: inline-block;
+  background: rgb(28, 9, 104);
+  color: #000; /* ← FIXED HERE */
+  padding: 4px 8px;
+  font-weight: 800;
+  font-size: 0.78rem;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(10, 20, 24, 0.6);
+  margin-left: auto;
+}
+
+/* Price area */
+.crypto-price {
+  margin: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.crypto-price .price {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text);
+}
+.crypto-price .change {
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 800;
+  display: inline-block;
+  font-size: 0.95rem;
+  color: white;
+}
+.change.positive {
+  background: rgba(46, 213, 115, 0.12);
+  color: var(--positive);
+  border: 1px solid rgba(46, 213, 115, 0.18);
+}
+.change.negative {
+  background: rgba(255, 71, 87, 0.12);
+  color: var(--negative);
+  border: 1px solid rgba(255, 71, 87, 0.18);
+}
+
+/* Stats row */
+.crypto-stats {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  align-items: flex-start;
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.stat-value {
+  font-size: 0.95rem;
+  color: var(--text);
+  font-weight: 800;
+}
+
+/* Loading */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  color: var(--muted);
+}
+.spinner {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 4px solid rgba(173, 216, 230, 0.14);
+  border-top-color: var(--accent);
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Footer */
+.footer {
+  max-width: var(--maxw);
+  margin: 24px auto;
+  padding: 18px;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* Back button */
+.back-button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* COIN DETAIL */
+.coin-detail {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 18px;
+}
+.coin-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.coin-title {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.coin-title img {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  border: 2px solid rgba(173, 216, 230, 0.12);
+  object-fit: cover;
+}
+.coin-title h1 {
+  font-size: 1.6rem;
+  margin: 0;
+  color: var(--text);
+}
+.coin-title .symbol {
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* ✔ UPDATED — Rank badge on coin page also BLACK */
+.coin-header .rank {
+  background: var(--accent);
+  color: #000; /* ← FIXED HERE */
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+/* Price section */
+.coin-price-section {
+  background: var(--panel-strong);
+  border-radius: 16px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.price-left h2 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--text);
+}
+.change-badge {
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 800;
+  display: inline-block;
+}
+.change-badge.positive {
+  background: rgba(46, 213, 115, 0.12);
+  color: var(--positive);
+  border: 1px solid rgba(46, 213, 115, 0.18);
+}
+.change-badge.negative {
+  background: rgba(255, 71, 87, 0.12);
+  color: var(--negative);
+  border: 1px solid rgba(255, 71, 87, 0.18);
+}
+
+.price-ranges {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.price-range small {
+  color: var(--muted);
+  display: block;
+  font-weight: 700;
+}
+.range-value {
+  color: var(--text);
+  font-weight: 800;
+  margin-top: 4px;
+}
+
+/* chart section */
+.chart-section {
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  margin-top: 16px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+.chart-section h3 {
+  margin: 0 0 12px 0;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+.chart-section canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  flex: 1;
+}
+
+/* stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+.stat-card {
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.stat-card small {
+  color: var(--muted);
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.stat-card .stat-value {
+  font-size: 1.05rem;
+  color: var(--text);
+  font-weight: 800;
+}
+
+/* small screens */
+@media (max-width: 900px) {
+  .crypto-container.grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+  .chart-section {
+    min-height: 320px;
+  }
+  .price-left h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    text-align: left;
+  }
+  #search {
+    width: 100%;
+  }
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 0 18px;
+  }
+  .view-toggle {
+    justify-content: flex-end;
+  }
+  .crypto-container.grid {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+  .coin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    text-align: left;
+  }
+  .coin-title h1 {
+    font-size: 1.25rem;
+  }
+  .chart-section {
+    min-height: 240px;
+  }
+}
+
+/* final tiny fixes */
+.crypto-card *,
+.crypto-card {
+  color: inherit;
+}
+a.crypto-card {
+  text-decoration: none;
+}
+
+.crypto-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crypto Tracker</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="header-content">
+          <div class="logo-section">
+            <h1>🚀 Crypto Tracker</h1>
+            <p>Real-time cryptocurrency prices</p>
+          </div>
+
+          <input
+            id="search"
+            type="text"
+            placeholder="Search cryptos..."
+            class="search-input"
+          />
+        </div>
+      </header>
+
+      <div class="controls">
+        <div class="dropdown" id="sortDropdown">
+          <div class="dropdown-selected" id="selectedSort">Rank</div>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <div class="dropdown-item" data-value="market_cap_rank">Rank</div>
+            <div class="dropdown-item" data-value="name">Name</div>
+            <div class="dropdown-item" data-value="price">Price ↑</div>
+            <div class="dropdown-item" data-value="price_desc">Price ↓</div>
+            <div class="dropdown-item" data-value="change">24h Change</div>
+            <div class="dropdown-item" data-value="market_cap">Market Cap</div>
+          </div>
+        </div>
+
+        <div class="view-toggle">
+          <button id="gridBtn" class="active">Grid</button>
+          <button id="listBtn">List</button>
+        </div>
+      </div>
+
+      <div id="cryptoContainer" class="crypto-container grid"></div>
+
+      <footer class="footer">
+        <p>Data from CoinGecko • Updated every 10s</p>
+      </footer>
+    </div>
+
+    <script type="module" src="assets/home.js"></script>
+  </body>
+</html>

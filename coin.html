@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Coin Details</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="header-content">
+          <div class="logo-section">
+            <h1>🚀 Crypto Tracker</h1>
+            <p>Real-time cryptocurrency data</p>
+          </div>
+
+          <a href="index.html" class="back-button">← Back</a>
+        </div>
+      </header>
+
+      <main class="main-area">
+        <div id="loadingBox" class="loading">
+          <div class="spinner"></div>
+          <p>Loading coin data…</p>
+        </div>
+
+        <article
+          id="coinDetail"
+          class="coin-detail"
+          style="display: none"
+        ></article>
+      </main>
+
+      <footer class="footer">
+        <p>Data from CoinGecko</p>
+      </footer>
+    </div>
+
+    <script type="module" src="assets/coin.js"></script>
+  </body>
+</html>
