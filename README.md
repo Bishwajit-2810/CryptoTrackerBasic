@@ -170,4 +170,3 @@ http://localhost:5000
 * Data provided by **CoinGecko API**
 
 ---
-
